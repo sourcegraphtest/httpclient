@@ -64,11 +64,11 @@ public class GSSBasedScheme extends AuthSchemeBase {
     private static final String KERBEROS5_OID = "1.2.840.113554.1.2";
     private static final String SPNEGO_OID = "1.3.6.1.5.5.2";
 
-    private static final Map<String, String> schemesToMechOids = new HashMap<String, String>(2);
+    private static final Map<String, String> SCHEMES_TO_MECH_OIDS = new HashMap<String, String>(2);
 
     static {
-        schemesToMechOids.put(AuthSchemes.KERBEROS, KERBEROS5_OID);
-        schemesToMechOids.put(AuthSchemes.SPNEGO, SPNEGO_OID);
+    	SCHEMES_TO_MECH_OIDS.put(AuthSchemes.KERBEROS, KERBEROS5_OID);
+    	SCHEMES_TO_MECH_OIDS.put(AuthSchemes.SPNEGO, SPNEGO_OID);
     }
 
     enum State {
@@ -85,7 +85,7 @@ public class GSSBasedScheme extends AuthSchemeBase {
     public GSSBasedScheme(final String scheme) {
         Args.notBlank(scheme, "scheme");
 
-        mechOidStr = schemesToMechOids.get(scheme);
+        mechOidStr = SCHEMES_TO_MECH_OIDS.get(scheme);
 
         if (mechOidStr == null)
             throw new IllegalArgumentException(String.format(
@@ -117,7 +117,7 @@ public class GSSBasedScheme extends AuthSchemeBase {
 
     @Override
     public boolean isComplete() {
-        return state == State.COMPLETED;
+    	return state == State.COMPLETED;
     }
 
     @Override
@@ -130,14 +130,16 @@ public class GSSBasedScheme extends AuthSchemeBase {
     @Override
     public Header authenticate(final Credentials credentials, final HttpRequest request, final HttpContext context)
             throws AuthenticationException {
-    	logger.debug("Performing SPNEGO authentication");
+    	logger.debug("Using HttpContext " + context);
         switch (state) {
         case COMPLETED:
             // TODO implement me!
             state = State.NOT_STARTED;
+            logger.debug("Resetting scheme state to from " + State.COMPLETED + " to " + State.NOT_STARTED);
         case NOT_STARTED:
             final GSSManager gssManager = GSSManager.getInstance();
 
+            logger.debug(String.format("Starting GSS-based authentication for scheme '%s' (%s)", scheme, mechOidStr));
             Oid mechOid;
             try {
                 mechOid = new Oid(mechOidStr);
@@ -166,9 +168,13 @@ public class GSSBasedScheme extends AuthSchemeBase {
                 gssContext.requestCredDeleg(true);
                 gssContext.requestMutualAuth(true);
 
+                logger.debug(String.format("GSS context for %s host with SPN '%s' created", isProxy()? "proxy" : "target", targetName));
+
                 byte[] outputToken = gssContext.initSecContext(inputToken, 0, inputToken.length);
                 inputToken = new byte[0];
                 state = gssContext.isEstablished() ? State.COMPLETED : State.IN_PROGRESS;
+
+                logger.debug("GSS context establishment is " + (state == State.COMPLETED ? "completed" : "in progress"));
 
                 final String base64OutputToken = Base64.encodeBase64String(outputToken);
                 outputToken = null;
@@ -199,6 +205,7 @@ public class GSSBasedScheme extends AuthSchemeBase {
                 inputToken = new byte[0];
                 state = gssContext.isEstablished() ? State.COMPLETED : State.IN_PROGRESS;
 
+                logger.debug("GSS context establishment is " + (state == State.COMPLETED ? "completed" : "in progress"));
                 final String base64OutputToken = Base64.encodeBase64String(outputToken);
                 outputToken = null;
 
@@ -231,9 +238,10 @@ public class GSSBasedScheme extends AuthSchemeBase {
             throws MalformedChallengeException {
         final String base64InputToken = buffer.substringTrimmed(beginIndex, endIndex);
 
-        logger.debug("Received SPNEGO token: " + base64InputToken);
-
         inputToken = Base64.decodeBase64(base64InputToken);
+
+        if(inputToken != null && inputToken.length != 0)
+        logger.debug("Received " + scheme + "token from server");
 
         if (inputToken == null)
             inputToken = new byte[0];
