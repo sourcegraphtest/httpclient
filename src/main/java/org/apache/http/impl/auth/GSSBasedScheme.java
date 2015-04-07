@@ -59,7 +59,7 @@ import org.ietf.jgss.Oid;
 @NotThreadSafe
 public class GSSBasedScheme extends AuthSchemeBase {
 
-	private final Log logger = LogFactory.getLog(getClass());
+    private final Log logger = LogFactory.getLog(getClass());
 
     private static final String KERBEROS5_OID = "1.2.840.113554.1.2";
     private static final String SPNEGO_OID = "1.3.6.1.5.5.2";
@@ -67,8 +67,8 @@ public class GSSBasedScheme extends AuthSchemeBase {
     private static final Map<String, String> SCHEMES_TO_MECH_OIDS = new HashMap<String, String>(2);
 
     static {
-    	SCHEMES_TO_MECH_OIDS.put(AuthSchemes.KERBEROS, KERBEROS5_OID);
-    	SCHEMES_TO_MECH_OIDS.put(AuthSchemes.SPNEGO, SPNEGO_OID);
+        SCHEMES_TO_MECH_OIDS.put(AuthSchemes.KERBEROS, KERBEROS5_OID);
+        SCHEMES_TO_MECH_OIDS.put(AuthSchemes.SPNEGO, SPNEGO_OID);
     }
 
     enum State {
@@ -117,7 +117,7 @@ public class GSSBasedScheme extends AuthSchemeBase {
 
     @Override
     public boolean isComplete() {
-    	return state == State.COMPLETED;
+        return state == State.COMPLETED;
     }
 
     @Override
@@ -130,7 +130,7 @@ public class GSSBasedScheme extends AuthSchemeBase {
     @Override
     public Header authenticate(final Credentials credentials, final HttpRequest request, final HttpContext context)
             throws AuthenticationException {
-    	logger.debug("Using HttpContext " + context);
+        logger.debug("Using HttpContext " + context);
         switch (state) {
         case COMPLETED:
             // TODO implement me!
