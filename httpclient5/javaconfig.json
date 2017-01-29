@@ -1,0 +1,68 @@
+{
+  "sourceDirectory" : "src/main/java",
+  "testSourceDirectory" : "src/test/java",
+  "repositories" : [ {
+    "id" : "apache.snapshots",
+    "url" : "http://repository.apache.org/snapshots"
+  }, {
+    "id" : "central",
+    "url" : "https://repo.maven.apache.org/maven2"
+  } ],
+  "dependencies" : [ {
+    "groupId" : "org.apache.httpcomponents.core5",
+    "artifactId" : "httpcore5",
+    "version" : "5.0-alpha2",
+    "scope" : "compile",
+    "systemPath" : null,
+    "packages" : [ "org.apache.hc.core5.http.nio.ssl", "org.apache.hc.core5.http.impl.nio", "org.apache.hc.core5.util", "org.apache.hc.core5.http.io", "org.apache.hc.core5.net", "org.apache.hc.core5.http.message", "org.apache.hc.core5.concurrent", "org.apache.hc.core5.reactor", "org.apache.hc.core5.http.nio", "org.apache.hc.core5.http.io.entity", "org.apache.hc.core5.http", "org.apache.hc.core5.annotation", "org.apache.hc.core5.http.impl", "org.apache.hc.core5.http.impl.nio.bootstrap", "org.apache.hc.core5.http.nio.entity", "org.apache.hc.core5.http.impl.io.bootstrap", "org.apache.hc.core5.pool", "org.apache.hc.core5.http.nio.command", "org.apache.hc.core5.http.config", "org.apache.hc.core5.http.impl.nio.entity", "org.apache.hc.core5.http.nio.support", "org.apache.hc.core5.reactor.ssl", "org.apache.hc.core5.ssl", "org.apache.hc.core5.function", "org.apache.hc.core5.http.impl.io", "org.apache.hc.core5.http.protocol" ]
+  }, {
+    "groupId" : "org.apache.logging.log4j",
+    "artifactId" : "log4j-api",
+    "version" : "2.7",
+    "scope" : "compile",
+    "systemPath" : null,
+    "packages" : [ "org.apache.logging.log4j.status", "org.apache.logging.log4j", "org.apache.logging.log4j.spi", "org.apache.logging.log4j.message", "org.apache.logging.log4j.util", "org.apache.logging.log4j.simple" ]
+  }, {
+    "groupId" : "org.apache.logging.log4j",
+    "artifactId" : "log4j-core",
+    "version" : "2.7",
+    "scope" : "test",
+    "systemPath" : null,
+    "packages" : [ "org.apache.logging.log4j.core.appender.db.jpa.converter", "org.apache.logging.log4j.core.appender.db.jdbc", "org.apache.logging.log4j.core.config.yaml", "org.apache.logging.log4j.core", "org.apache.logging.log4j.core.config", "org.apache.logging.log4j.core.appender", "org.apache.logging.log4j.core.selector", "org.apache.logging.log4j.core.config.plugins.validation.validators", "org.apache.logging.log4j.core.tools", "org.apache.logging.log4j.core.config.plugins.validation", "org.apache.logging.log4j.core.net", "org.apache.logging.log4j.core.appender.mom", "org.apache.logging.log4j.core.config.properties", "org.apache.logging.log4j.core.config.builder.impl", "org.apache.logging.log4j.core.net.server", "org.apache.logging.log4j.core.appender.mom.jeromq", "org.apache.logging.log4j.core.config.plugins.util", "org.apache.logging.log4j.core.net.ssl", "org.apache.logging.log4j.core.async", "org.apache.logging.log4j.core.config.status", "org.apache.logging.log4j.core.appender.db", "org.apache.logging.log4j.core.lookup", "org.apache.logging.log4j.core.config.plugins.validation.constraints", "org.apache.logging.log4j.core.osgi", "org.apache.logging.log4j.core.filter", "org.apache.logging.log4j.core.util.datetime", "org.apache.logging.log4j.core.appender.rolling", "org.apache.logging.log4j.core.layout", "org.apache.logging.log4j.core.appender.routing", "org.apache.logging.log4j.core.appender.db.jpa", "org.apache.logging.log4j.core.config.builder.api", "org.apache.logging.log4j.core.impl", "org.apache.logging.log4j.core.config.json", "org.apache.logging.log4j.core.config.plugins.processor", "org.apache.logging.log4j", "org.apache.logging.log4j.core.appender.rolling.action", "org.apache.logging.log4j.core.pattern", "org.apache.logging.log4j.core.config.xml", "org.apache.logging.log4j.core.util", "org.apache.logging.log4j.core.appender.rewrite", "org.apache.logging.log4j.core.script", "org.apache.logging.log4j.core.net.mom.jms", "org.apache.logging.log4j.core.config.composite", "org.apache.logging.log4j.core.config.plugins.convert", "org.apache.logging.log4j.core.config.plugins.visitors", "org.apache.logging.log4j.core.jmx", "org.apache.logging.log4j.core.config.plugins", "org.apache.logging.log4j.core.jackson", "org.apache.logging.log4j.core.appender.mom.kafka" ]
+  }, {
+    "groupId" : "commons-codec",
+    "artifactId" : "commons-codec",
+    "version" : "1.10",
+    "scope" : "compile",
+    "systemPath" : null,
+    "packages" : [ "org.apache.commons.codec.language.bm", "org.apache.commons.codec.net", "org.apache.commons.codec.binary", "org.apache.commons.codec", "org.apache.commons.codec.language", "org.apache.commons.codec.digest" ]
+  }, {
+    "groupId" : "junit",
+    "artifactId" : "junit",
+    "version" : "4.12",
+    "scope" : "test",
+    "systemPath" : null,
+    "packages" : [ "org.junit.runners", "org.junit.experimental.theories", "org.junit.experimental", "org.junit.internal.runners.rules", "org.junit.internal.requests", "org.junit.experimental.results", "org.junit.internal.runners.model", "org.junit.internal.builders", "junit.textui", "org.junit.experimental.categories", "org.junit.experimental.theories.internal", "org.junit.runners.parameterized", "junit.extensions", "org.junit.internal.runners.statements", "org.junit.experimental.max", "org.junit.runner.notification", "org.junit.matchers", "org.junit.experimental.theories.suppliers", "org.junit.runner.manipulation", "org.junit.internal.matchers", "org.junit.rules", "org.junit.experimental.runners", "org.junit.runners.model", "org.junit.internal", "junit.runner", "org.junit.runner", "org.junit", "org.junit.validator", "org.junit.internal.runners", "junit.framework" ]
+  }, {
+    "groupId" : "org.hamcrest",
+    "artifactId" : "hamcrest-core",
+    "version" : "1.3",
+    "scope" : "test",
+    "systemPath" : null,
+    "packages" : [ "org.hamcrest.internal", "org.hamcrest.core", "org.hamcrest" ]
+  }, {
+    "groupId" : "org.mockito",
+    "artifactId" : "mockito-core",
+    "version" : "1.10.19",
+    "scope" : "test",
+    "systemPath" : null,
+    "packages" : [ "org.mockito.internal.exceptions.stacktrace", "org.mockito.internal.verification.api", "org.mockito.internal.configuration.injection.scanner", "org.mockito.internal.matchers", "org.mockito.stubbing.answers", "org.mockito.cglib.util", "org.mockito.internal.verification.checkers", "org.mockito.internal.creation.cglib", "org.mockito.internal.creation", "org.mockito.internal.creation.instance", "org.mockito.internal.stubbing", "org.mockito.listeners", "org.mockito.internal.invocation", "org.mockito.invocation", "org.mockito.internal.util.collections", "org.mockito.cglib.transform.impl", "org.mockito", "org.mockito.asm.tree", "org.mockito.internal.configuration.injection.filter", "org.mockito.internal.stubbing.answers", "org.mockito.asm.tree.analysis", "org.mockito.internal.configuration.plugins", "org.mockito.runners", "org.mockito.internal.configuration.injection", "org.mockito.stubbing", "org.mockito.internal.verification.argumentmatching", "org.mockito.exceptions.verification", "org.mockito.internal.junit", "org.mockito.internal.creation.settings", "org.mockito.exceptions", "org.mockito.internal.util.reflection", "org.mockito.internal.verification", "org.mockito.mock", "org.mockito.internal.progress", "org.mockito.asm", "org.mockito.internal", "org.mockito.internal.runners", "org.mockito.internal.util.io", "org.mockito.internal.reporting", "org.mockito.verification", "org.mockito.exceptions.stacktrace", "org.mockito.plugins", "org.mockito.exceptions.base", "org.mockito.internal.util", "org.mockito.internal.creation.util", "org.mockito.cglib.core", "org.mockito.exceptions.verification.junit", "org.mockito.cglib.beans", "org.mockito.internal.exceptions", "org.mockito.exceptions.misusing", "org.mockito.cglib.proxy", "org.mockito.internal.exceptions.util", "org.mockito.asm.util", "org.mockito.cglib.transform", "org.mockito.internal.handler", "org.mockito.internal.util.junit", "org.mockito.internal.matchers.apachecommons", "org.mockito.internal.runners.util", "org.mockito.configuration", "org.mockito.internal.configuration", "org.mockito.internal.listeners", "org.mockito.internal.invocation.finder", "org.mockito.cglib.reflect", "org.mockito.internal.stubbing.defaultanswers", "org.mockito.internal.invocation.realmethod", "org.mockito.junit", "org.mockito.internal.debugging" ]
+  }, {
+    "groupId" : "org.objenesis",
+    "artifactId" : "objenesis",
+    "version" : "2.1",
+    "scope" : "test",
+    "systemPath" : null,
+    "packages" : [ "org.objenesis.instantiator.android", "org.objenesis", "org.objenesis.instantiator", "org.objenesis.strategy", "org.objenesis.instantiator.jrockit", "org.objenesis.instantiator.sun", "org.objenesis.instantiator.basic", "org.objenesis.instantiator.gcj", "org.objenesis.instantiator.perc" ]
+  } ]
+}
